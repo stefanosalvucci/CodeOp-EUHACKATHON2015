@@ -1,0 +1,20 @@
+<template name="cA_start">
+    dddddddddddddddddddddddddddddd
+    <button id="send-sample-data" class="btn waves-effect waves-light">Send sample data to server</button>
+{{test}}
+    {{#if equals sendStatus "NOT_SENT"}}
+        Data not sent...
+    {{/if}}
+
+    {{#if equals sendStatus "SENT"}}
+        Data sent :) !<br/>
+        {{#each sampleActions}}
+            {{this}} <!-- TODO: use this.valueOf() if I get a strange output . If doesn't yet work, rewrite the helper to return the Collection "Actions" I just filled in -->
+        {{/each}}
+    {{/if}}
+
+    {{#if equals sendStatus "ERROR"}}
+        The data could not be :(
+    {{/if}}
+
+</template>

@@ -1,4 +1,4 @@
-/*Template.aStart.events({
+Template.aStart.events({
     "click #send-sample-data": function () {
 
         Meteor.call('pushActionsToClientB', actions, function(error, result){
@@ -16,4 +16,6 @@
 Template.aStart.onRendered(function(){
    Session.set('sendStatus', "NOT_SENT");
    lg(Session.get('sendStatus'));
-});*/
+
+   initClientA();
+});

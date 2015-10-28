@@ -1,0 +1,5 @@
+window.initClientB = function(){
+
+};
+
+initClientB();

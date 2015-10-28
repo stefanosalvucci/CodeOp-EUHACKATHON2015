@@ -1,0 +1,1 @@
+window.testJs = 12;

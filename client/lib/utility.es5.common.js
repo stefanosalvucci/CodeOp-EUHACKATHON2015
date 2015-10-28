@@ -1,8 +1,10 @@
-var lg  = function(message, logType){
-    console.log(message);
+Meteor.startup(function() {
+    var lg  = function(message, logType){
+        console.log(message);
 
-    logType = (typeof logType == 'undefined' ? 'info' : logType);
-};
+    };
 
+    // make functions global
+    window.lg = lg;
 
-window.lg = lg;
+});

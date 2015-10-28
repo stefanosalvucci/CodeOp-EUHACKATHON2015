@@ -1,4 +1,4 @@
-Template.cA_start.helpers({
+/*Template.aStart.helpers({
     "sendStatus": function(){
         return Session.get('sendStatus') || "";
     },
@@ -8,4 +8,4 @@ Template.cA_start.helpers({
     "test": function(){
         return "qbcde";
     }
-});
+});*/

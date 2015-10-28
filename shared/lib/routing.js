@@ -1,19 +1,17 @@
 Router.configure({
-    loadingTemplate: 'loading',
-    layoutTemplate: 'common'
+    layoutTemplate: 'commonTemplate',
+    loadingTemplate: 'loadingApp'
 });
 
-// define routes
+Router.route('/', {
+    name:'home',
+    template: 'home'
+});
 
-Router.route('/cA_start', {
-    name:'cA_start',
-    template:'cA_start'/*,
+Router.route('/aStart', {
     waitOn: function(){
-        return Meteor.subscribe('ActionsKidA'); // TODO: complete
-    }*/
+        return Meteor.subscribe('ActionsKidA');
+    }
 });
 
-Router.route('/cB_start', {
-    name:'cB_start',
-    template:'cB_start'
-});
+Router.route('/bStart');

@@ -1,6 +1,6 @@
 var myGame = new Kiwi.Game();
 
-var myState = new Kiwi.State( "myState" );
+var myState = new Kiwi.State( "myState" ); // it's the main level
 
 var loadingState = new Kiwi.State( "loadingState" );
 
@@ -14,7 +14,7 @@ myState.preload = function() {
 };
 
 
-myState.create = function(){
+myState.create = function(){ // level design (init background, character aspect and position, animations, ...)
 
 	this.background = new Kiwi.GameObjects.StaticImage(
 		this, this.textures[ "defaultBackground" ], 0, 0, true );
@@ -55,7 +55,7 @@ myState.create = function(){
 };
 
 
-myState.update = function() {
+myState.update = function() {  // Game logic (key press [switch in if..else form]--> do something, conditions based on character position, ... )
 
 	Kiwi.State.prototype.update.call( this );
 
@@ -187,6 +187,8 @@ loadingState.create = function() {
 	this.tweenOut.onComplete( this.switchToMain, this );
 
 	this.tweenOut.start();
+
+	// here it goes loadingState.switchToMain
 };
 
 
@@ -194,9 +196,10 @@ loadingState.switchToMain = function() {
 	this.game.states.switchState( "myState" );
 };
 
-
+// init game config
 myGame.states.addState(myState);
 myGame.states.addState(loadingState);
 myGame.states.addState(preloader);
 
+// go to preloader (initial status)
 myGame.states.switchState("preloader");

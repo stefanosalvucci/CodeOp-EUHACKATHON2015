@@ -1,0 +1,5 @@
+var initClientB = function(){
+    // TODO
+
+    // ....
+};

@@ -128,7 +128,7 @@ Meteor.startup(function() { // wait for app's environment to be loaded
 
 			Kiwi.State.prototype.preload.call(this);
 
-			this.addImage("loadingImage", "loadingImage.png", true);
+			this.addImage("loadingImage", "/images/loadingImage.png", true); // from "public folder" = <root url>/
 		};
 
 
@@ -163,10 +163,10 @@ Meteor.startup(function() { // wait for app's environment to be loaded
 			this.tweenIn.start();
 
 			// Assets to load
-			this.addSpriteSheet("characterSprite", "character.png", 150, 117);
-			this.addImage("defaultBackground", "loadingBackground.png");
-			this.addImage("withoutLadder", "without_ladder.png");
-			this.addImage("ladderOnHole", "ladder_on_hole.png");
+			this.addSpriteSheet("characterSprite", "/images/character.png", 150, 117);
+			this.addImage("defaultBackground", "/images/loadingBackground.png");
+			this.addImage("withoutLadder", "/images/without_ladder.png");
+			this.addImage("ladderOnHole", "/images/ladder_on_hole.png");
 		};
 
 
@@ -210,7 +210,12 @@ Meteor.startup(function() { // wait for app's environment to be loaded
 	};
 
 	window.initClientA = function () {
-		// kiwi engine
-		initKiwiEngine();
+		// load kiwi from cdn
+		// Meteor.Loader.loadJs("//cdnjs.cloudflare.com/ajax/libs/kiwi/0.2.1/kiwi.min.js",function(){
+			// init kiwi engine
+			initKiwiEngine();
+		// });
+
+
 	};
 });

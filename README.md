@@ -14,9 +14,9 @@ COME:
 inserire codice tra <template name=""> e </template> utilizzando 
 
 APP (29-10 10pm) DEPLOYED AT: <W.I.P>
---> TEST: aprire su 2 tab diverse de browser o su 2 diversi computer il link
-... su una tab cliccare PRIMA su Bob e poi sull'altra Alice
-... osservare tab con Bob ricevere dei dati passati in modo fittizio dal client di Alice
+- --> TEST: aprire su 2 tab diverse de browser o su 2 diversi computer il link
+- ... su una tab cliccare PRIMA su Bob e poi sull'altra Alice
+- ... osservare tab con Bob ricevere dei dati passati in modo fittizio dal client di Alice
 
 NOTA / TODO:
 - volendo si può non far scegliere

@@ -18,6 +18,7 @@ APP (29-10 10pm) DEPLOYED AT: <W.I.P>
 - ... su una tab cliccare PRIMA su Bob e poi sull'altra Alice
 - ... osservare tab con Bob ricevere dei dati passati in modo fittizio dal client di Alice
 
-NOTA / TODO:
+**NOTA / TODO**:
 - volendo si può non far scegliere
 - TODO: integrare global variable by Alberto (trasformandala in un Session.method e triggerando il push to Client B quando la session variable è disponibile)
+- TODO: appCache to cache kiwiJS?

@@ -1,14 +1,16 @@
 <template name="bStart">
-    view kid B
 
-    {{#if equals sendStatus "NOT_SENT"}}
+    {{#unless actions}}
         Data not received...
-    {{/if}}
+    {{/unless}}
 
-    {{#if equals sendStatus "SENT"}}
-        Data received :) !<br/>
-        {{#each sampleActions}}
-            {{this}} <!-- TODO: use this.valueOf() if I get a strange output . If doesn't yet work, rewrite the helper to return the Collection "Actions" I just filled in -->
-        {{/each}}
-    {{/if}}
+    <div class="row">
+        <div class="col m6 offset-m3">
+            <ul>
+                {{#each actions}}
+                    <li>{{this.action_name}}</li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
 </template>

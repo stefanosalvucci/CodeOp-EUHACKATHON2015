@@ -15,5 +15,9 @@ Meteor.startup(function() {
         }
     });
 
-    Router.route('/bStart');
+    Router.route('/bStart', {
+        waitOn: function(){
+            return Meteor.subscribe('ActionsKidA');
+        }
+    });
 });

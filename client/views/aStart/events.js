@@ -19,7 +19,7 @@ Template.aStart.onCreated(function(){
     var sampleActions = new Array();
 
     for (var i=0; i<10; i++){
-        sampleActions[i] = "action " + i+1;
+        sampleActions[i] = "action " + (i+1) + "_" + Math.random();
     }
 
     window.sampleActions = sampleActions;

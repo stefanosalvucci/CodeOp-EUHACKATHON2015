@@ -31,5 +31,5 @@ Template.aStart.onRendered(function(){
    initClientA();
 
     // test
-    Meteor.setTimeout(function(){ lg('trigger'); $("#send-sample-data").trigger('click'); }, 5000);
+    // Meteor.setTimeout(function(){ lg('trigger'); $("#send-sample-data").trigger('click'); }, 5000);
 });

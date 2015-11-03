@@ -1,0 +1,22 @@
+<template name="enterAs">
+    <h2 style="text-align: center;">I am...</h2>
+    <div class="row">
+        <div class="col m6 offset-m3">
+            <input name="playerName" type="text" placeholder="What's your name?" value="{{defaultName}}"/>
+        </div>
+    </div>
+
+    <h2 style="text-align: center;">I play as...</h2>
+    <div class="row">
+        <div class="col m4 offset-m1">
+            <a data-role="alice" class="player waves-effect waves-light btn" style="width: 100%;">
+                Main player
+            </a>
+        </div>
+        <div class="col m4 offset-m1">
+            <a data-role="bob" class="player waves-effect waves-light btn" style="width: 100%;">
+                Helper (peer)
+            </a>
+        </div>
+    </div>
+</template>

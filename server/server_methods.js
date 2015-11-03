@@ -11,5 +11,29 @@ Meteor.methods({
         });
 
         return "ok_insert";
+    },
+    'createPlayer': function(username, role){
+        check(username, String);
+        check(role, String);
+
+        return Accounts.createUser({
+            username: username,
+            password: 'no_password', // needed for login itself
+            profile: {
+                role: role
+            }
+        });
+    },
+    'playerExists': function(username){
+        check(username, String);
+
+        var userId = Meteor.users.findOne({"username": username});
+
+        return userId;
+    },
+    'playerLogin': function(username){
+        check(username, String);
+
+
     }
 });

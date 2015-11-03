@@ -1,8 +1,18 @@
 Meteor.startup(function() { // wait for app's environment to be loaded
 	var initKiwiEngine = function () {
-		lg ("init Kiwi engine start");
 
-		var myGame = new Kiwi.Game();
+		/*
+		* Per Stefano: enable debugMode in appInit.js
+		* TODO: remove this comment
+		 */
+
+		lg ("init Kiwi engine start (debug mode: " + (Session.get('debugMode') ? 'yes': 'no') + " )");
+
+		if (!Session.get('debugMode')) {Kiwi.Log.display = false}
+
+		var myGame = new Kiwi.Game('content' , 'myGame', null, {
+			debug: (Session.get('debugMode') ? Kiwi.DEBUG_ON : Kiwi.DEBUG_OFF)
+		});
 
 		var myState = new Kiwi.State("myState"); // it's the main level
 

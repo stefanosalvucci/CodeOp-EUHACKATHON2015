@@ -1,4 +1,29 @@
 <template name="chat">
-    <!-- TODO: add chat (Meteor module, or manually?)... variable based on current template (a/b) to know who is using the chat
-    !! based on CURRENT LOGGED IN USER-->
+    <div class="row" style="margin-top: 30vh;">
+        <div class="col s12">
+            <!-- TODO: position absolute or FLOAT right in the window -->
+            <div class="card-panel">
+                <form class="chat">
+                    <div class="input-field col s12">
+                        <input id="new-message" style="text-align: center;" name="new-message" value="{{defaultMessage}}" placeholder="Insert a message..." type="text" required>
+                    </div>
+                    <div class="row">
+                        <button class="col s12 btn waves-effect" type="submit" name="action">
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- messages sent -->
+                <br/>
+                <ul>
+                {{#each chatMessages}}
+                     {{this.username}}&nbsp;-&nbsp;{{this.message}}
+                {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+     <!-- TODO: based on CURRENT LOGGED IN USER (perhaps different message color without too much graphics) -->
 </template>

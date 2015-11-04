@@ -8,7 +8,10 @@ Template.enterAs.events({
 
         // create user by real name, unless it already exists
         Meteor.call('playerExists', playerName, function(error, result){
+            // set session vars to be used in other views
             Session.set('playerName', playerName);
+                Session.set('playerRole', playerRole);
+
             if (result){
                 Session.set('returningPlayer', true);
                 Router.go(routeName);

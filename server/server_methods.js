@@ -31,9 +31,16 @@ Meteor.methods({
 
         return userId;
     },
-    'playerLogin': function(username){
-        check(username, String);
+    'sendNewMessage': function(newMessage, playerName, playerRole){
+        check(newMessage, String);
+        check(playerName, String);
+        check(playerRole, String);
 
-
+        return ChatMessages.insert({
+            username: playerName,
+            role: playerRole,
+            message:newMessage,
+            sentAt: new Date.now()
+        });
     }
 });

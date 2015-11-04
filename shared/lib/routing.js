@@ -18,7 +18,7 @@ Meteor.startup(function() {
             return Meteor.subscribe('ActionsKidA');
         },
         onStop: function(){
-            Meteor.logout()
+            Meteor.logout();
         }
     });
 

@@ -5,5 +5,6 @@ Meteor.startup(function() {
         return ActionsKidA.find();
     });
 
-
+    // reset chat history
+    if (Meteor.isServer) {ChatMessages.remove({});}
 });

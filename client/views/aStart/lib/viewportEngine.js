@@ -1,6 +1,6 @@
-var gameFunctions = {}
+var gameFunctions = {};
 
-$(document).ready(function(){
+var initViewportEngine = function(){
 
   functions.moveSpriteRight = function(){
     $('#sprite-image').attr("src", "images/mario_move.gif");
@@ -9,7 +9,7 @@ $(document).ready(function(){
       .end(function(){
         $('#sprite-image').attr("src", "images/mario_stop.png");
       });
-  }
+  };
 
   functions.flipRight = function(){
     move("#sprite-image")
@@ -19,8 +19,10 @@ $(document).ready(function(){
     .add('transform: scaleX(-1);')
     .add('filter: FlipH;')
     .add('-ms-filter: "FlipH";')
-  }
+  };
 
-  window.gameFunctions = gameFunctions
+  window.gameFunctions = gameFunctions;
 
-})
+};
+
+window.initViewportEngine = initViewportEngine;

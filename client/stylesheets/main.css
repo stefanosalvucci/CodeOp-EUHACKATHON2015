@@ -12,17 +12,20 @@ a.bottone{
 	color: black;
 }
 
-.playerchoicetext{
-	margin-top:4px;
-
-}
-
 button {
 	border-radius: 25px;
 	background: #8AC007;
 	width: 111px;
 	height: 30px;
 	text-align: center;
+}
+
+button:active {
+	background: #FFA500;
+}
+
+button:focus {
+	background: #FFA500;
 }
 
 .label{

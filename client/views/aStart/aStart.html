@@ -11,16 +11,26 @@
 	}
 
 	.label{
-		text-align: center;
+		text-align: left;
+		margin-top: 4px;
 		height: 30px;
-		width: 111px;
+		width: 85px;
 	}
 
 	.leftcontainer{
 		width: 50%;
 	}
+
 	.rightcontainer{
 		width: 40%;
+	}
+
+	.instructionContainerRow{
+		margin-top:5px;
+	}
+
+	#gamePlayerContainer{
+		margin: 0px 2px 5px 2px;
 	}
 </style>
 <!-- TODO: remove this -->
@@ -36,7 +46,7 @@
 	</div>
 	<div class='rightcontainer' style='float:right; height:377px; border-style: solid;'>
 		<span class='label'>Plan:</span>
-		<div style='height:318px; width:500px; overflow-y: auto;' id='scriptContainer'></div>
+		<div style='height:314px; width:100%; overflow-y: auto;' id='scriptContainer'></div>
 		<div id='gamePlayerContainer'>
 			<button id='play'>Play</button>
 			<button id='reset'>Reset</button>
@@ -64,33 +74,42 @@
 	</p>
 </div>
 <div id='actionsContainer' class='leftcontainer'  style='margin-top:20px; border-style: solid; padding: 10px 0px 10px 0px'>
-	<div style='float:left'>
-		<div class='label'>Actions:</div>
-		<div class='label'>Repetition:</div>
-		<div class='label'>Evaluation:</div>
-		<div class='label'>Condition:</div>
-	</div>
-	<div>
-		<div>
+	<div >
+		<div style='float:left' class='label'>Actions:</div>
+		<div style='float:left'>
 			<button class='action line' id='walkLeft'>Walk Left</button>
 			<button class='action line' id='walkRight'>Walk Right</button>
 			<button class='action line' id='takeLadder'>Take Ladder</button>
 			<button class='action line' id='dropLadder'>Drop Ladder</button>
 		</div>
-		<div>
+	</div>
+	<div style='clear:both'></div>
+	<div class='instructionContainerRow'>
+		<div style='float:left' class='label'>Repetition:</div>
+		<div style='float:left'>
 			<button class='think line' id='while'>While</button>
 		</div>
-		<div>
+	</div>
+	<div style='clear:both'></div>
+	<div class='instructionContainerRow'>
+		<div style='float:left' class='label'>Evaluation:</div>
+		<div style='float:left'>
 			<button class='think line' id='if'>If</button>
 		</div>
-		<div>
+	</div>
+	<div style='clear:both'></div>
+	<div class='instructionContainerRow'>
+		<div style='float:left' class='label'>Condition:</div>
+		<div style='float:left'>
 			<button class='condition line' id='not'>Not</button>
 			<button class='condition line' id='AtLadder'>At Ladder</button>
 			<button class='condition line' id='AtCanyon'>At Canyon</button>
 			<button class='condition line' id='HasLadder'>Has Ladder</button>
 		</div>
 	</div>
+	<div style='clear:both'></div>
 </div>
+<div style='clear:both'></div>
 
 <span class='label'>Execution:</span>
 <div id='executionContainer'></div>

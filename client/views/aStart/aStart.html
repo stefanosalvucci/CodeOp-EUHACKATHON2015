@@ -1,57 +1,63 @@
 <template name="aStart">
-    <!-- TODO: remove this -->
-    <strong>&nbsp;Sample data sending</strong> -  {{sendStatus}}
-    <br/><a class="waves-effect waves-light btn" id="send-sample-data">Send sample data</a>
-    <!-- TODO: push when the Session's global array is actually set -->
-    <br/><br/><br/><br/><br/><br/>
+<!-- TODO: remove this -->
+<strong>&nbsp;Sample data sending</strong> -  {{sendStatus}}
+<br/><a class="waves-effect waves-light btn" id="send-data">Send sample data</a>
+<!-- TODO: push when the Session's global array is actually set -->
+<br/><br/><br/><br/><br/><br/>
 
-    Instructions:
-    <ul>
-        <li>Select actions</li>
-        <li>Each action is added to a plan</li>
-        <li>'Repeat Until' statement, paired with a condition, repeats next action until the condition is no more satisfied</li>
-        <li>Click on Play to execute the plan</li>
-        <li>Click on Reset to reset the plan</li>
-    </ul>
-    <strong>Plot</strong>
-    <p>
-        An avalanche is coming on you; there is:
-    <ul>
-        <li>a ladder somewhere on the left</li>
-        <li>a canyon somewhere on the right</li>
-    </ul>
-    You need to get past the canyon to save yourself from the avalanche!
-    <strong>What do your do?</strong>
-    </p>
-    <div id='actionsContainer'>
-        Actions:
-        <button class='action line' id='walkLeft'>Walk Left</button>
-        <button class='action line' id='walkRight'>Walk Right</button>
-        <button class='action line' id='takeLadder'>Take Ladder</button>
-        <button class='action line' id='dropLadder'>Drop Ladder</button>
-        <br/>
-        Repetition:
-        <button class='think line' id='repeat'>Repeat Until</button>
-        <br/>
-        Condition:
-        <button class='condition line' id='NatLadder'>Not At Ladder</button>
-        <button class='condition line' id='NatCanyon'>Not At Canyon</button>
-    </div>
+Instructions:
+<ul>
+	<li>Select actions</li>
+	<li>Each action is added to a plan</li>
+	<li>'Repeat Until' statement, paired with a condition, repeats next action until the condition is no more satisfied</li>
+	<li>Click on Play to execute the plan</li>
+	<li>Click on Reset to reset the plan</li>
+</ul>
+<strong>Plot</strong>
+<p>
+An avalanche is coming on you; there is:
+<ul>
+	<li>a ladder somewhere on the left</li>
+	<li>a canyon somewhere on the right</li>
+</ul>
+You need to get past the canyon to save yourself from the avalanche!
+<strong>What do your do?</strong>
+</p>
+<div id='actionsContainer'>
+	Actions:
+	<button class='action line' id='walkLeft'>Walk Left</button>
+	<button class='action line' id='walkRight'>Walk Right</button>
+	<button class='action line' id='takeLadder'>Take Ladder</button>
+	<button class='action line' id='dropLadder'>Drop Ladder</button>
+	<br/>
+	Repetition:
+	<button class='think line' id='while'>While</button>
+	<br/>
+	Evaluation:
+	<button class='think line' id='if'>If</button>
+	<br/>
+	Condition:
+	<button class='condition line' id='not'>Not</button>
+	<button class='condition line' id='AtLadder'>At Ladder</button>
+	<button class='condition line' id='AtCanyon'>At Canyon</button>
+	<button class='condition line' id='HasLadder'>Has Ladder</button>
+</div>
 
-    <div id="viewport" style="background-image: url('images/mario_bg_with_ladder.jpg'); height: 377px; width: 664px;">
-      <div id="sprite" style="padding-top:269px;">
-        <img id="sprite-image" src="images/mario_stop.png" style="height:50px;">
-      </div>
-    </div>
+<div id="viewport" style="background-image: url('images/mario_bg_with_ladder.jpg'); height: 377px; width: 664px;">
+  <div id="sprite" style="padding-top:269px;">
+    <img id="sprite-image" src="images/mario_stop.png" style="height:50px;">
+  </div>
+</div>
 
-    <br/>
-    Plan:
-    <div id='scriptContainer'></div>
-    <br/>
-    <br/>
-    Execution:
-    <div id='executionContainer'></div>
 
-    <button id='play'>Play</button>
-    <button id='reset'>Reset</button>
+<br/>
+Plan:
+<div id='scriptContainer'></div>
+<br/>
+<br/>
+Execution:
+<div id='executionContainer'></div>
+
+<button id='play'>Play</button>
+<button id='reset'>Reset</button>
 </template>

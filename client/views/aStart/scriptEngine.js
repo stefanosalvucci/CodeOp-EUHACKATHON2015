@@ -40,6 +40,9 @@ var initScriptEngine = function(){
 	//current execution step
 	var currentStep=1;
 
+	//list of actions for the B panel
+	var planList=new Array();
+
 	//maximum execution steps allowed to prevent infinite loops
 	var maxSteps=50;
 
@@ -81,6 +84,7 @@ var initScriptEngine = function(){
 		maxSteps=50;
 		gameOver=false;
 		scriptedAction=$('<div>');
+		$('#scriptContainer').append(scriptedAction);
 	}
 
 	//terminates the game
@@ -118,6 +122,10 @@ var initScriptEngine = function(){
 
 	//populate the output log
 	function gameLog(message){
+		//add to list of game events to be sent to B
+		planList.push(message);
+
+		//publish on panel A
 		$('#executionContainer').append($('<div>').text(message));
 	}
 
@@ -180,6 +188,12 @@ var initScriptEngine = function(){
 			gameLog('you walk right');
 		}
 
+		//if you have the ladder, the ladder moves with you
+		if(hasLadder){
+			//update ladder location
+			ladderLocation=heroLocation;
+		}
+
 		//check what you have at reach
 		updateSurroundingStatus();
 	}
@@ -191,6 +205,12 @@ var initScriptEngine = function(){
 
 		//move left
 		heroLocation-=1;
+
+		//if you have the ladder, the ladder moves with you
+		if(hasLadder){
+			//update ladder location
+			ladderLocation=heroLocation;
+		}
 
 		//output log
 		gameLog('you walk left');
@@ -230,6 +250,9 @@ var initScriptEngine = function(){
 			//drop it
 			hasLadder=false;
 
+			//update ladder location
+			ladderLocation=heroLocation;
+
 		//special case: dropping it on the canyon makes it traversable
 			if(atCanyon){
 				//update world status
@@ -245,7 +268,45 @@ var initScriptEngine = function(){
 			//deny action
 			gameLog('you didn\' have any ladder to drop');
 		}
+
+		//check what you have at reach
+		updateSurroundingStatus();
 	}
+
+	//execute script
+	$('#play').on('click',function(){
+		
+		//if the flag is still raised, the player left a while without subject action; stop
+		if(justClosedWhile){
+			alert('you need to select an action after a while');
+			return;
+		}
+
+		//execute generated code
+		eval(plan);
+		console.log(plan);
+		
+		//send data to panel B
+		window.planList=planList;
+		Session.set('actionsToSend', actionsToSend);
+		$('#send-data').trigger('click');
+
+		//if plan was not sufficient to carry out goal, kill the player
+		if(!gameOver) loseGame();
+		console.log(planList);
+	});
+
+	//reset game
+	$('#reset').on('click',function(){
+		//clear plan
+		$('#scriptContainer').html('');
+
+		//clear log
+		$('#executionContainer').html('');
+
+		//reset game status
+		resetGame();
+	});
 
 	//wheneven the player clicks on an action
 	$('#actionsContainer').on('click','.line',function(){
@@ -286,7 +347,7 @@ var initScriptEngine = function(){
 					//demand it
 					alert('you need a condition');
 
-					//and refuse to add the action	
+					//and refuse to add the action
 					return;
 				}else{
 
@@ -330,36 +391,9 @@ var initScriptEngine = function(){
 			}
 		}
 
-	})
+	});
 
-	//execute script
-	$('#play').on('click',function(){
 
-		//if the flag is still raised, the player left a while without subject action; stop
-		if(justClosedWhile){
-			alert('you need to select an action after a while');
-			return;
-		}
-
-		//execute generated code
-		eval(plan);
-		console.log(plan);
-
-		//if plan was not sufficient to carry out goal, kill the player
-		if(!gameOver) loseGame();
-	})
-
-	//reset game
-	$('#reset').on('click',function(){
-		//clear plan
-		$('#scriptContainer').html('');
-
-		//clear log
-		$('#executionContainer').html('');
-
-		//reset game status
-		resetGame();
-	})
 };
 
 window.initScriptEngine = initScriptEngine

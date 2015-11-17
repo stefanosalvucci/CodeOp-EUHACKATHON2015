@@ -1,16 +1,15 @@
-var functions = {}
+var gameFunctions = {}
 
 $(document).ready(function(){
 
   functions.moveSpriteRight = function(){
-    $('#sprite-image').attr("src", "mario_move.gif");
+    $('#sprite-image').attr("src", "images/mario_move.gif");
     move('#sprite')
       .add('margin-left', 30)
       .end(function(){
-        $('#sprite-image').attr("src", "mario_stop.png");
+        $('#sprite-image').attr("src", "images/mario_stop.png");
       });
   }
-
 
   functions.flipRight = function(){
     move("#sprite-image")
@@ -21,5 +20,7 @@ $(document).ready(function(){
     .add('filter: FlipH;')
     .add('-ms-filter: "FlipH";')
   }
+
+  window.gameFunctions = gameFunctions
 
 })

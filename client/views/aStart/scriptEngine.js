@@ -31,6 +31,9 @@ var initScriptEngine = function(){
 	//current execution step
 	var currentStep=1;
 
+	//list of actions for the B panel
+	var planList=new Array();
+
 	//maximum execution steps allowed to prevent infinite loops
 	var maxSteps=50;
 
@@ -110,6 +113,10 @@ var initScriptEngine = function(){
 
 	//populate the output log
 	function gameLog(message){
+		//add to list of game events to be sent to B
+		planList.push(message);
+
+		//publish on panel A
 		$('#executionContainer').append($('<div>').text(message));
 	}
 
@@ -354,9 +361,14 @@ var initScriptEngine = function(){
 		//execute generated code
 		eval(plan);
 		console.log(plan);
+		
+		//send data to panel B
+		window.planList=planList;
+		$('#send-data').trigger('click');
 
 		//if plan was not sufficient to carry out goal, kill the player
 		if(!gameOver) loseGame();
+		console.log(planList);
 	})
 
 	//reset game

@@ -6,5 +6,6 @@ Meteor.startup(function() { // wait for app's environment to be loaded
 
 		// init script engine
 		initScriptEngine();
+
 	};
 });

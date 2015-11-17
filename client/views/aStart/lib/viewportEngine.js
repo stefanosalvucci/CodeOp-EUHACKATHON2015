@@ -1,8 +1,9 @@
-var initViewPortEngine = function(){
+var gameFunctions = {};
 
-  var gameFunctions = {};
+var initViewportEngine = function(){
 
   gameFunctions.moveSpriteRight = function(){
+    gameFunctions.flip(1);
     $('#sprite-image').attr("src", "images/mario_move.gif");
     move('#sprite')
       .add('margin-left', 30)
@@ -11,18 +12,27 @@ var initViewPortEngine = function(){
       });
   };
 
-  gameFunctions.flipRight = function(){
+  gameFunctions.moveSpriteLeft = function(){
+    gameFunctions.flip(-1);
+    $('#sprite-image').attr("src", "images/mario_move.gif");
+    move('#sprite')
+      .sub('margin-left', 30)
+      .end(function(){
+        $('#sprite-image').attr("src", "images/mario_stop.png");
+      });
+  }
+
+  gameFunctions.flip = function(direction){
     move("#sprite-image")
-    .add('-moz-transform: scaleX(-1);')
-    .add('-o-transform: scaleX(-1);')
-    .add('-webkit-transform: scaleX(-1);')
-    .add('transform: scaleX(-1);')
-    .add('filter: FlipH;')
-    .add('-ms-filter: "FlipH";')
-  };
+      .set('-moz-transform', 'scaleX(' + direction + ')')
+      .set('-o-transform', 'scaleX(' + direction + ')')
+      .set('-webkit-transform', 'scaleX(' + direction + ')')
+      .set('transform', 'scaleX(' + direction + ')')
+      .end()
+  }
 
   window.gameFunctions = gameFunctions;
 
 };
 
-window.initViewPortEngine = initViewPortEngine;
+window.initViewportEngine = initViewportEngine;

@@ -26,7 +26,9 @@ Template.aStart.onCreated(function(){ // before rendered
 
     window.sampleActions = sampleActions;*/
 
-    initViewPortEngine();
+
+    // call view port engine
+    initViewportEngine();
 });
 
 Template.aStart.onRendered(function(){

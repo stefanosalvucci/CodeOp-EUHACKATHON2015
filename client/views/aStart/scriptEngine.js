@@ -34,6 +34,9 @@ var initScriptEngine = function(){
 	//list of actions for the B panel
 	var planList=new Array();
 
+	//call trace to move the viewPort
+	var callTrace= new Array();
+
 	//maximum execution steps allowed to prevent infinite loops
 	var maxSteps=50;
 
@@ -76,6 +79,10 @@ var initScriptEngine = function(){
 		gameOver=false;
 		scriptedAction=$('<div>');
 		$('#scriptContainer').append(scriptedAction);
+		delete planList;
+		planList= new Array();
+		delete callTrace;
+		callTrace= new Array();
 	}
 
 	//terminates the game
@@ -84,6 +91,9 @@ var initScriptEngine = function(){
 		gameLog(message);
 		alert(message);
 		gameOver=true;
+
+		//add to list function calls for the viewport (filter actions that have no graphical relevance)
+		callTrace.push('loseGame');
 	}
 
 	//checks whether the player won
@@ -94,6 +104,9 @@ var initScriptEngine = function(){
 			gameLog(message);
 			alert(message);
 			gameOver=true;
+
+			//add to list function calls for the viewport (filter actions that have no graphical relevance)
+			callTrace.push('winGame');
 		}
 
 		//if you reached maximum number of steps, terminate
@@ -162,6 +175,9 @@ var initScriptEngine = function(){
 				//move past
 				heroLocation+=1;
 
+				//add to list function calls for the viewport
+				callTrace.push(arguments.callee.name);
+
 				//update log
 				gameLog('you walk over the canyon');
 
@@ -174,6 +190,9 @@ var initScriptEngine = function(){
 		}else{
 			//move right
 			heroLocation+=1;
+
+			//add to list function calls for the viewport
+			callTrace.push(arguments.callee.name);
 
 			//output log
 			gameLog('you walk right');
@@ -196,6 +215,9 @@ var initScriptEngine = function(){
 
 		//move left
 		heroLocation-=1;
+
+		//add to list function calls for the viewport
+		callTrace.push(arguments.callee.name);
 
 		//if you have the ladder, the ladder moves with you
 		if(hasLadder){
@@ -223,6 +245,9 @@ var initScriptEngine = function(){
 			//take it
 			hasLadder=true;
 
+			//add to list function calls for the viewport
+			callTrace.push(arguments.callee.name);
+
 			//output log
 			gameLog('you got the ladder');
 		}else{
@@ -240,6 +265,9 @@ var initScriptEngine = function(){
 		if(hasLadder){
 			//drop it
 			hasLadder=false;
+
+			//add to list function calls for the viewport (filter actions that have no graphical relevance)
+			callTrace.push(arguments.callee.name);
 
 			//update ladder location
 			ladderLocation=heroLocation;
@@ -266,7 +294,7 @@ var initScriptEngine = function(){
 
 	//execute script
 	$('#play').on('click',function(){
-		
+
 		//if the flag is still raised, the player left a while without subject action; stop
 		if(justClosedWhile){
 			alert('you need to select an action after a while');
@@ -276,15 +304,19 @@ var initScriptEngine = function(){
 		//execute generated code
 		eval(plan);
 		console.log(plan);
-		
+
 		//send data to panel B
 		window.planList=planList;
 		Session.set('planList', planList);
 		$('#send-data').trigger('click');
 
+		//animate the viewPort
+		viewportFunctions.playAnimation(callTrace);
+
 		//if plan was not sufficient to carry out goal, kill the player
 		if(!gameOver) loseGame();
 		console.log(planList);
+		console.log(callTrace);
 	});
 
 	//reset game
@@ -365,35 +397,35 @@ var initScriptEngine = function(){
 						justClosedWhile=true;
 					}
 				}
-		}else{
+			}else{
 
-			//prevent putting a boolean or negation without being in the need of it
-			switch(instruction) {
-				case 'not':
-				case 'AtCanyon':
-				case 'AtLadder':
-				case 'HasLadder':
-					//demand it
-					alert('you need to be in an if or a while to put a condition or a negation');
+				//prevent putting a boolean or negation without being in the need of it
+				switch(instruction) {
+					case 'not':
+					case 'AtCanyon':
+					case 'AtLadder':
+					case 'HasLadder':
+						//demand it
+						alert('you need to be in an if or a while to put a condition or a negation');
 
-					//and refuse to add the action
-					return;
+						//and refuse to add the action
+						return;
+				}
+				//add the action
+				plan=plan.concat(instruction+'(); ');
+
+				//generate output in the current container
+				scriptedAction.append($('<span>').text(stringActions[instruction]));
+
+				//create a new visible element container
+				scriptedAction=$('<div>');
+
+				//add visible element to script list
+				$('#scriptContainer').append(scriptedAction);
+
+				//switch off the flag so we know the syntax is good
+				if(justClosedWhile) justClosedWhile=false;
 			}
-			//add the action
-			plan=plan.concat(instruction+'(); ');
-
-			//generate output in the current container
-			scriptedAction.append($('<span>').text(stringActions[instruction]));
-
-			//create a new visible element container
-			scriptedAction=$('<div>');
-
-			//add visible element to script list
-			$('#scriptContainer').append(scriptedAction);
-
-			//switch off the flag so we know the syntax is good
-			if(justClosedWhile) justClosedWhile=false;
-		}
 		}
 
 	});

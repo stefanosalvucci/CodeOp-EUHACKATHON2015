@@ -1,6 +1,6 @@
 var gameFunctions = {};
 
-$(document).ready(function(){
+var initViewportEngine = function(){
 
   gameFunctions.moveSpriteRight = function(){
     gameFunctions.flip(1);
@@ -10,7 +10,7 @@ $(document).ready(function(){
       .end(function(){
         $('#sprite-image').attr("src", "images/mario_stop.png");
       });
-  }
+  };
 
   gameFunctions.moveSpriteLeft = function(){
     gameFunctions.flip(-1);
@@ -31,6 +31,8 @@ $(document).ready(function(){
       .end()
   }
 
-  window.gameFunctions = gameFunctions
+  window.gameFunctions = gameFunctions;
 
-})
+};
+
+window.initViewportEngine = initViewportEngine;

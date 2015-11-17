@@ -15,7 +15,7 @@ Meteor.startup(function() {
 
     Router.route('/aStart', {
         waitOn: function(){
-            return Meteor.subscribe('ActionsKidA');
+            return [Meteor.subscribe('ActionsKidA'),Meteor.subscribe('ChatMessages')];
         },
         onStop: function(){
             Meteor.logout();
@@ -24,10 +24,13 @@ Meteor.startup(function() {
 
     Router.route('/bStart', {
         waitOn: function(){
-            return Meteor.subscribe('ActionsKidA');
+            return [Meteor.subscribe('ActionsKidA'),Meteor.subscribe('ChatMessages')];
         },
         onStop: function(){
             Meteor.logout()
         }
     });
+
+    // TODO: remove
+    Router.route('/chat');
 });

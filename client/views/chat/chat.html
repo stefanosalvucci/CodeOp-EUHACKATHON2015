@@ -8,7 +8,7 @@
                         <input id="new-message" style="text-align: center;" name="new-message" value="{{defaultMessage}}" placeholder="Insert a message..." type="text" required>
                     </div>
                     <div class="row">
-                        <button class="col s12 btn waves-effect" type="submit" name="action">
+                        <button class="col s12 btn waves-effect" type="submit" name="action">Send IM
                             <i class="material-icons right">send</i>
                         </button>
                     </div>
@@ -18,7 +18,7 @@
                 <br/>
                 <ul>
                 {{#each chatMessages}}
-                     {{this.username}}&nbsp;-&nbsp;{{this.message}}
+                     <li>{{this.username}}&nbsp;-&nbsp;{{this.message}}</li>
                 {{/each}}
                 </ul>
             </div>

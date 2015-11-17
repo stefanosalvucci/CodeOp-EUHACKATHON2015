@@ -4,13 +4,26 @@ Meteor.methods({
         lg(actionsArray);
 
         // clean up collection
-        ActionsKidA.remove({});
+        Actions.remove({});
 
+        // tell Kid B what's going on
         actionsArray.forEach(function(value, key, thisArray){
-            ActionsKidA.insert({action_name: value});
+            Actions.insert({action_name: value});
         });
 
         return "ok_insert";
+    },
+    'pushCalltraceToClientB': function (calltraceArray){
+        lg("Call trace being pushed:");
+        lg(calltraceArray);
+
+        // clean up collection
+        CallTrace.remove({});
+
+        // name of JS functions which reflect actionsArray (Server method 'pushActions...')
+        calltraceArray.forEach(function(value){
+            CallTrace.insert({function_name: value});
+        });
     },
     'createPlayer': function(username, role){
         check(username, String);

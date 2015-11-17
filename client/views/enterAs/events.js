@@ -1,10 +1,14 @@
 Template.enterAs.events({
     "click .player": function(evt){
         evt.preventDefault();
-        var playerName = $("[name=playerName]").val(),
-            // playRole: 'alice' = player, 'bob' = player who reviews the code thereafter
-            playerRole = evt.target.getAttribute('data-role'),
+        var playerName = $("#playerName").val(),
+        // playRole: 'alice' = player, 'bob' = player who reviews the code thereafter
+            playerRole = evt.target.dataset.role, // $($('.player')[0]).data('role')
             routeName = (playerRole == 'alice' ? 'aStart' : 'bStart');
+
+        lg('a >>' + playerName);
+        lg('b >>' + playerRole);
+        lg('c >>' + routeName);
 
         // create user by real name, unless it already exists
         Meteor.call('playerExists', playerName, function(error, result){

@@ -308,13 +308,19 @@ var initScriptEngine = function(){
 		Session.set('planList', planList);
 		$('#send-data').trigger('click');
 
-		//animate the viewPort
-		viewportFunctions.playAnimation(callTrace);
-
 		//if plan was not sufficient to carry out goal, kill the player
 		if(!gameOver) loseGame();
 		console.log(planList);
 		console.log(callTrace);
+
+		// send trace to Meteor server
+		Meteor.call('pushCalltraceToClientB', callTrace, function(error, result){
+			if (result){
+				lg(result);
+			} else { // error
+				lg (error);
+			}
+		});
 	});
 
 	//reset game

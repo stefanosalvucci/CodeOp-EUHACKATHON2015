@@ -1,7 +1,7 @@
 Template.chat.events({
     "submit .chat": function(evt){
         evt.preventDefault();
-        var newMessage = $("#new-message").val(),
+        var newMessage = $("#new-message").val(), // TODO: use pure JS to get val should any bug come up
         // playRole: 'alice' = player, 'bob' = player who reviews the code thereafter
             playerName = Session.get('playerName'),
             playerRole = Session.get('playerRole');

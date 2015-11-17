@@ -16,11 +16,6 @@ Template.aStart.events({
     }
 });
 
-Template.aStart.onCreated(function(){ // before rendered
-    // call view port engine
-    initViewportEngine();
-});
-
 Template.aStart.onRendered(function(){
    Session.set('sendStatus', "NOT_SENT");
 

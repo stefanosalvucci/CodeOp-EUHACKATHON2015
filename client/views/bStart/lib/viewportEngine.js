@@ -58,16 +58,6 @@ var initViewportEngine = function(){
     }
   };
 
-  viewportFunctions.takeLadder = function(callbacks){
-    if (atLadder) {
-      $('#viewport').css("background-image", "url('images/mario_bg.jpg')");
-    }
-    if (callbacks.length > 0) {
-      console.log(callbacks);
-      var functionToCall = callbacks.shift();
-      eval(functionToCall + '([' + callbacks.map(function(o){return '"' + o + '"'}) + '])');
-    }
-  }
 
   viewportFunctions.dropLadder = function(callbacks){
     if (hasLadder && atCanyon) {
@@ -87,7 +77,7 @@ var initViewportEngine = function(){
       .set('-webkit-transform', 'scaleX(' + direction + ')')
       .set('transform', 'scaleX(' + direction + ')')
       .end()
-  }
+  };
 
   viewportFunctions.playAnimation = function(callTrace){
     var functionsStack = callTrace.map(function(o){return "viewportFunctions." + o})

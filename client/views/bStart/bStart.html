@@ -1,8 +1,14 @@
 <template name="bStart">
-
+{{> chat}}
     {{#unless actions}}
-        Data not received...
+        Waiting for actions..
     {{/unless}}
+
+    <div id="viewport" class='leftcontainer' style="background-image: url('images/mario_bg.jpg'); height: 377px; float:left; border-style: solid;">
+        <div id="sprite">
+            <img id="sprite-image" src="images/mario_stop.png" style="height:50px;">
+        </div>
+    </div>
 
     <div class="row">
         <div class="col m6 offset-m3"> <!--MaterializeCss grid -->

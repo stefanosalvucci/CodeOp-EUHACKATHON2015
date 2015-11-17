@@ -6,15 +6,12 @@ Template.chat.events({
             playerName = Session.get('playerName'),
             playerRole = Session.get('playerRole');
 
+        // lg(newMessage);
+
         // create user by real name, unless it already exists
         Meteor.call('sendNewMessage', newMessage, playerName, playerRole, function(error, result){
             if (result){ lg (result); $("#new-message").val(''); }
             if (error){ lg (error); }
         });
     }
-});
-
-Template.chat.onRendered(function(){
-   // tmp TODO (remove)
-    Session.set('playerName', 'Manu');
 });

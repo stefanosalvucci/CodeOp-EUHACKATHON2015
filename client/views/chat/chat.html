@@ -1,29 +1,23 @@
 <template name="chat">
-    <div class="row" style="margin-top: 30vh;">
+    <div class="row"> <!-- align div to bottom-right corner -->
+        <!-- messages sent -->
         <div class="col s12">
-            <!-- TODO: position absolute or FLOAT right in the window -->
-            <div class="card-panel">
-                <form class="chat">
-                    <div class="input-field col s12">
-                        <input id="new-message" style="text-align: center;" name="new-message" value="{{defaultMessage}}" placeholder="Insert a message..." type="text" required>
-                    </div>
-                    <div class="row">
-                        <button class="col s12 btn waves-effect" type="submit" name="action">Send IM
-                            <i class="material-icons right">send</i>
-                        </button>
-                    </div>
-                </form>
-
-                <!-- messages sent -->
-                <br/>
-                <ul>
+            <ul style="height: 50%; overflow-y: scroll;">
                 {{#each chatMessages}}
-                     <li>{{this.username}}&nbsp;-&nbsp;{{this.message}}</li>
+                    <li><strong>{{this.username}}</strong>&nbsp;-&nbsp;{{this.message}}</li>
                 {{/each}}
-                </ul>
-            </div>
+            </ul>
+            <!--<div class="card-panel" style="margin: 0 1rem; height: 100%;">-->
+            <form class="chat" style="height: 40%;">
+                <div class="input-field col s12">
+                    <input id="new-message" style="text-align: center;" name="new-message" value="{{defaultMessage}}" placeholder="Insert a message..." type="text" required>
+                </div>
+                <div class="row">
+                    <button class="col s12 btn waves-effect" type="submit" name="action">Send IM
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
-
-     <!-- TODO: based on CURRENT LOGGED IN USER (perhaps different message color without too much graphics) -->
 </template>

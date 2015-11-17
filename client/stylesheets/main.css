@@ -1,6 +1,45 @@
 body {
-    font-family:Arial;
-    height: 100%;
+	font-family:Arial;
+	height: 100%;
 }
 
+button {
+	border-radius: 25px;
+	background: #8AC007;
+	width: 111px;
+	height: 30px;
+	text-align: center;
+
+}
+
+.label{
+	text-align: left;
+	margin-top: 4px;
+	height: 30px;
+	width: 85px;
+}
+
+.leftcontainer{
+	width: 50%;
+	float:left;
+	margin: 5px 5px 5px 5px;
+}
+
+.rightcontainer{
+	width: 40%;
+	float:right;
+	margin: 5px 5px 5px 5px;
+}
+
+.instructionContainerRow{
+	margin-top:5px;
+}
+
+.instructionGroup{
+	margin-left:5px;
+}
+
+#gamePlayerContainer{
+	margin: 0px 2px 5px 2px;
+}
 /*# sourceMappingURL=main.css.map */

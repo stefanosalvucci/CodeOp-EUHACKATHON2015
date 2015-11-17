@@ -2,7 +2,7 @@ Template.aStart.events({
     "click #send-data": function (evt) {
         evt.preventDefault();
 
-        var dataToSend = Session.get('actionsToSend');
+        var dataToSend = Session.get('planList');
 
         Meteor.call('pushActionsToClientB', dataToSend, function(error, result){
            if (result){
@@ -17,16 +17,6 @@ Template.aStart.events({
 });
 
 Template.aStart.onCreated(function(){ // before rendered
-    // sample data
-    /*var sampleActions = new Array();
-
-    for (var i=0; i<10; i++){
-        sampleActions[i] = "action " + (i+1) + "_" + Math.random();
-    }
-
-    window.sampleActions = sampleActions;*/
-
-
     // call view port engine
     initViewportEngine();
 });

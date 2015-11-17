@@ -279,7 +279,7 @@ var initScriptEngine = function(){
 		
 		//send data to panel B
 		window.planList=planList;
-		Session.set('actionsToSend', actionsToSend);
+		Session.set('planList', planList);
 		$('#send-data').trigger('click');
 
 		//if plan was not sufficient to carry out goal, kill the player

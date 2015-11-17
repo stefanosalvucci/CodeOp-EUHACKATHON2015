@@ -42,7 +42,7 @@ Meteor.methods({
             username: playerName,
             role: playerRole,
             message:newMessage,
-            sentAt: new Date.now()
+            sentAt: Date.now()
         });
     }
 });

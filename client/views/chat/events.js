@@ -1,15 +1,20 @@
 Template.chat.events({
     "submit .chat": function(evt){
         evt.preventDefault();
-        var newMessage = $("[name=playerName]").val(),
+        var newMessage = $("#new-message").val(),
         // playRole: 'alice' = player, 'bob' = player who reviews the code thereafter
             playerName = Session.get('playerName'),
             playerRole = Session.get('playerRole');
 
         // create user by real name, unless it already exists
         Meteor.call('sendNewMessage', newMessage, playerName, playerRole, function(error, result){
-            if (result){ lg (result); }
+            if (result){ lg (result); $("#new-message").val(''); }
             if (error){ lg (error); }
         });
     }
+});
+
+Template.chat.onRendered(function(){
+   // tmp TODO (remove)
+    Session.set('playerName', 'Manu');
 });

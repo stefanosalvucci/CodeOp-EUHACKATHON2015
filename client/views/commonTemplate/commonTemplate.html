@@ -1,12 +1,9 @@
 <template name="commonTemplate">
+    {{> chat}}
+
     {{#if loggedIn}}
         Welcome {{#if returningPlayer}} back{{/if}} {{playerName}}!<br/>
     {{/if}}
 
     {{> yield}} <!-- to show here the content of others template -->
-
-    <!--common part -->
-    <!-- ... -->
-
-    {{> chat}}
 </template>

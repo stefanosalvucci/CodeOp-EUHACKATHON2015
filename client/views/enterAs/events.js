@@ -10,7 +10,7 @@ Template.enterAs.events({
         Meteor.call('playerExists', playerName, function(error, result){
             // set session vars to be used in other views
             Session.set('playerName', playerName);
-                Session.set('playerRole', playerRole);
+            Session.set('playerRole', playerRole);
 
             if (result){
                 Session.set('returningPlayer', true);
@@ -25,8 +25,9 @@ Template.enterAs.events({
                     }
 
                     if (error){
-                        // do nothing
                         lg(error);
+                        // show error
+                        $('#modalUsernameNotSet').openModal();
                     }
                 });
                 Session.set('returningPlayer', false);

@@ -1,4 +1,4 @@
-$(document).ready(function(){
+var initScriptEngine = function(){
 
 		//can you take a ladder?
 		var atLadder=false;
@@ -286,4 +286,6 @@ $(document).ready(function(){
 				//reset game status
 				resetGame();
 				})
-})
+};
+
+window.initScriptEngine = initScriptEngine

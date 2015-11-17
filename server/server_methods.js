@@ -16,6 +16,8 @@ Meteor.methods({
         check(username, String);
         check(role, String);
 
+        lg(username);
+
         return Accounts.createUser({
             username: username,
             password: 'no_password', // needed for login itself

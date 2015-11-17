@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6ba9d577-b223-4012-9750-2607d391efdd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/aStart/aInit.js" afterPath="$PROJECT_DIR$/client/views/aStart/aInit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/aStart/events.js" afterPath="$PROJECT_DIR$/client/views/aStart/events.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/aStart/lib/viewportEngine.js" afterPath="$PROJECT_DIR$/client/views/aStart/lib/viewportEngine.js" />
-    </list>
+    <list default="true" id="6ba9d577-b223-4012-9750-2607d391efdd" name="Default" comment="" />
     <ignored path="hack4code.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,8 +36,8 @@
       <file leaf-file-name="viewportEngine.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/views/aStart/lib/viewportEngine.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.692308">
-              <caret line="27" column="47" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
+            <state vertical-scroll-proportion="-15.115385">
+              <caret line="23" column="39" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -51,7 +47,7 @@
         <entry file="file://$PROJECT_DIR$/client/views/aStart/events.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.78768235">
-              <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+              <caret line="27" column="22" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -817,14 +813,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/aStart/lib/viewportEngine.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.692308">
-          <caret line="27" column="47" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/aStart/aInit.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.5384617">
@@ -844,10 +832,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/aStart/lib/viewportEngine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.115385">
+          <caret line="23" column="39" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/aStart/events.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.78768235">
-          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+          <caret line="27" column="22" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="22" />
           <folding />
         </state>
       </provider>

@@ -28,7 +28,7 @@ var initViewportEngine = function(){
     };
   };
 
-  gameFunctions.moveSpriteLeft = function(){
+  gameFunctions.moveSpriteLeft = function(callbacks){
     gameFunctions.flip(-1);
     $('#sprite-image').attr("src", "images/mario_move.gif");
     if (parseInt($('#sprite').css("margin-left")) > 70) {

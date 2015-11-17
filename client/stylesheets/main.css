@@ -25,6 +25,14 @@ button {
 	text-align: center;
 }
 
+button:active {
+	background: #FFA500;
+}
+
+button:focus {
+	background: #FFA500;
+}
+
 .label{
 	text-align: left;
 	margin-top: 4px;

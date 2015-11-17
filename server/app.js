@@ -13,10 +13,10 @@ Meteor.startup(function() {
         return CallTrace.find();
     });
 
-    // reset collections
+    /*// reset collections
     if (Meteor.isServer) {
         ChatMessages.remove({});
         Actions.remove({});
         CallTrace.remove({});
-    }
+    }*/
 });

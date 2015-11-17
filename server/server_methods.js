@@ -59,5 +59,11 @@ Meteor.methods({
             message:newMessage,
             sentAt: Date.now()
         });
+    },
+    'resetDbCollections': function(){
+        ChatMessages.remove({});
+        Actions.remove({});
+        CallTrace.remove({});
+        return 'done';
     }
 });

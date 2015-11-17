@@ -60,10 +60,12 @@ Meteor.methods({
             sentAt: Date.now()
         });
     },
+    // !! DEBUG
     'resetDbCollections': function(){
         ChatMessages.remove({});
         Actions.remove({});
         CallTrace.remove({});
-        return 'done';
+        Meteor.users.remove({});
+        return true;
     }
 });

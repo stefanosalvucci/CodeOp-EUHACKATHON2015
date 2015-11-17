@@ -238,6 +238,43 @@ var initScriptEngine = function(){
 		}
 	}
 
+	//execute script
+	$('#play').on('click',function(){
+
+		//if the flag is still raised, the player left a while without subject action; stop
+		if(justClosedWhile){
+			alert('you need to select an action after a while');
+			return;
+		}
+
+		//execute generated code
+		eval(plan); // TODO: ! some combinations lead to eval() error
+
+		// create push array
+		console.log(plan.split(';')); // TODO: create the array correctly
+
+		// push to Kid B
+		var actionsToSend = plan.split(';');
+		Session.set('actionsToSend', actionsToSend);
+		$("#send-data").trigger('click');
+
+
+		//if plan was not sufficient to carry out goal, kill the player
+		if(!gameOver) loseGame();
+	});
+
+	//reset game
+	$('#reset').on('click',function(){
+		//clear plan
+		$('#scriptContainer').html('');
+
+		//clear log
+		$('#executionContainer').html('');
+
+		//reset game status
+		resetGame();
+	});
+
 	//wheneven the player clicks on an action
 	$('#actionsContainer').on('click','.line',function(){
 		//get action name
@@ -277,7 +314,7 @@ var initScriptEngine = function(){
 					//demand it
 					alert('you need a condition');
 
-					//and refuse to add the action	
+					//and refuse to add the action
 					return;
 				}else{
 
@@ -321,36 +358,9 @@ var initScriptEngine = function(){
 			}
 		}
 
-	})
+	});
 
-	//execute script
-	$('#play').on('click',function(){
 
-		//if the flag is still raised, the player left a while without subject action; stop
-		if(justClosedWhile){
-			alert('you need to select an action after a while');
-			return;
-		}
-
-		//execute generated code
-		eval(plan);
-		console.log(plan);
-
-		//if plan was not sufficient to carry out goal, kill the player
-		if(!gameOver) loseGame();
-	})
-
-	//reset game
-	$('#reset').on('click',function(){
-		//clear plan
-		$('#scriptContainer').html('');
-
-		//clear log
-		$('#executionContainer').html('');
-
-		//reset game status
-		resetGame();
-	})
 };
 
 window.initScriptEngine = initScriptEngine

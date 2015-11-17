@@ -1,8 +1,10 @@
 Template.aStart.events({
-    "click #send-sample-data": function (evt) {
+    "click #send-data": function (evt) {
         evt.preventDefault();
 
-        Meteor.call('pushActionsToClientB', sampleActions, function(error, result){
+        var dataToSend = Session.get('actionsToSend');
+
+        Meteor.call('pushActionsToClientB', dataToSend, function(error, result){
            if (result){
                 lg(result);
                Session.set('sendStatus','SENT');
@@ -16,13 +18,13 @@ Template.aStart.events({
 
 Template.aStart.onCreated(function(){ // before rendered
     // sample data
-    var sampleActions = new Array();
+    /*var sampleActions = new Array();
 
     for (var i=0; i<10; i++){
         sampleActions[i] = "action " + (i+1) + "_" + Math.random();
     }
 
-    window.sampleActions = sampleActions;
+    window.sampleActions = sampleActions;*/
 
     initViewPortEngine();
 });

@@ -1,25 +1,25 @@
 var initScriptEngine = function(){
 
 	//can you take a ladder?
-	var atLadder=false;
+	window.atLadder=false;
 
 	//are you at the canyon
-	var atCanyon=false;
+	window.atCanyon=false;
 
 	//have you got the ladder
-	var hasLadder=false;
+	window.hasLadder=false;
 
 	//can you cross the canyon (because you put the ladder on it)
-	var canyonTraversable=false;
+	window.canyonTraversable=false;
 
 	//where the ladder is
-	var ladderLocation=-3;
+	window.ladderLocation=-3;
 
 	//where the canyon is
-	var canyonLocation=3;
+	window.canyonLocation=3;
 
 	//where the hero is
-	var heroLocation=0;
+	window.heroLocation=0;
 
 	//the code generated
 	var plan='';
@@ -89,7 +89,6 @@ var initScriptEngine = function(){
 	function loseGame(){
 		message='after some time, the avalanche buries you: you lost';
 		gameLog(message);
-		alert(message);
 		gameOver=true;
 
 		//add to list function calls for the viewport (filter actions that have no graphical relevance)
@@ -102,7 +101,6 @@ var initScriptEngine = function(){
 		if(heroLocation > canyonLocation){
 			message='you got past the canyon: you won';
 			gameLog(message);
-			alert(message);
 			gameOver=true;
 
 			//add to list function calls for the viewport (filter actions that have no graphical relevance)

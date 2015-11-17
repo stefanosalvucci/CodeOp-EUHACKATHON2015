@@ -2,11 +2,12 @@ var viewportFunctions = {};
 
 var initViewportEngine = function(){
 
-  viewportFunctions.moveSpriteRight = function(callbacks){
+  viewportFunctions.walkRight = function(callbacks){
     viewportFunctions.flip(1);
     $('#sprite-image').attr("src", "images/mario_move.gif");
     if (parseInt($('#sprite').css("margin-left")) < 600) {
       move('#sprite')
+        .duration(1000)
         .add('margin-left', 30)
         .end(function(){
           $('#sprite-image').attr("src", "images/mario_stop.png");
@@ -28,11 +29,14 @@ var initViewportEngine = function(){
     };
   };
 
-  viewportFunctions.moveSpriteLeft = function(callbacks){
+
+
+  viewportFunctions.walkLeft = function(callbacks){
     viewportFunctions.flip(-1);
     $('#sprite-image').attr("src", "images/mario_move.gif");
     if (parseInt($('#sprite').css("margin-left")) > 70) {
       move('#sprite')
+        .duration(1000)
         .sub('margin-left', 30)
         .end(function(){
           $('#sprite-image').attr("src", "images/mario_stop.png");
@@ -86,7 +90,17 @@ var initViewportEngine = function(){
   }
 
   viewportFunctions.playAnimation = function(callTrace){
+    var functionsStack = callTrace.map(function(o){return "viewportFunctions." + o})
+    var functionToCall = functionsStack.shift()
+    eval(functionToCall + '([' + functionsStack.map(function(o){return '"' + o + '"'}) + '])');
+  }
 
+  viewportFunctions.loseGame = function(callTrace){
+    alert("after some time, the avalanche buries you: you lost");
+  }
+
+  viewportFunctions.winGame = function(callTrace){
+    alert("congrats, you did it!");
   }
 
   window.viewportFunctions = viewportFunctions;
@@ -94,7 +108,7 @@ var initViewportEngine = function(){
 
   // initial move to put mario right enough
   setTimeout(function(){
-    viewportFunctions.moveSpriteRight(["viewportFunctions.moveSpriteRight", "viewportFunctions.moveSpriteRight", "viewportFunctions.moveSpriteRight"]);
+    viewportFunctions.walkRight(["viewportFunctions.walkRight", "viewportFunctions.walkRight", "viewportFunctions.walkRight"]);
   }, 400);
 
 };

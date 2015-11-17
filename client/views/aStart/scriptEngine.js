@@ -271,7 +271,7 @@ var initScriptEngine = function(){
 
 
 		//while has a strict syntax; if while is selected
-		if('while'==instruction || 'if'==instruction){
+		if(('while'==instruction || 'if'==instruction) && !inCondition){
 
 			//take note and demand a condition afterwards
 			inCondition=true;
@@ -309,6 +309,7 @@ var initScriptEngine = function(){
 
 					//if it's a negation
 					if('not'==instruction){
+
 						//generate code for not
 						plan=plan.concat('!');
 
@@ -329,22 +330,35 @@ var initScriptEngine = function(){
 						justClosedWhile=true;
 					}
 				}
-			}else{
-				//add the action
-				plan=plan.concat(instruction+'(); ');
+		}else{
 
-				//generate output in the current container
-				scriptedAction.append($('<span>').text(stringActions[instruction]));
+			//prevent putting a boolean or negation without being in the need of it
+			switch(instruction) {
+				case 'not':
+				case 'AtCanyon':
+				case 'AtLadder':
+				case 'HasLadder':
+					//demand it
+					alert('you need to be in an if or a while to put a condition or a negation');
 
-				//create a new visible element container
-				scriptedAction=$('<div>');
-
-				//add visible element to script list
-				$('#scriptContainer').append(scriptedAction);
-
-				//switch off the flag so we know the syntax is good
-				if(justClosedWhile) justClosedWhile=false;
+					//and refuse to add the action
+					return;
 			}
+			//add the action
+			plan=plan.concat(instruction+'(); ');
+
+			//generate output in the current container
+			scriptedAction.append($('<span>').text(stringActions[instruction]));
+
+			//create a new visible element container
+			scriptedAction=$('<div>');
+
+			//add visible element to script list
+			$('#scriptContainer').append(scriptedAction);
+
+			//switch off the flag so we know the syntax is good
+			if(justClosedWhile) justClosedWhile=false;
+		}
 		}
 
 	})
@@ -361,7 +375,7 @@ var initScriptEngine = function(){
 		//execute generated code
 		eval(plan);
 		console.log(plan);
-		
+
 		//send data to panel B
 		window.planList=planList;
 		$('#send-data').trigger('click');

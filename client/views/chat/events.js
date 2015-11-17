@@ -6,7 +6,7 @@ Template.chat.events({
             playerName = Session.get('playerName'),
             playerRole = Session.get('playerRole');
 
-        lg(newMessage);
+        // lg(newMessage);
 
         // create user by real name, unless it already exists
         Meteor.call('sendNewMessage', newMessage, playerName, playerRole, function(error, result){

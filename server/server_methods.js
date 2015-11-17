@@ -38,6 +38,8 @@ Meteor.methods({
         check(playerName, String);
         check(playerRole, String);
 
+        lg(newMessage);
+
         return ChatMessages.insert({
             username: playerName,
             role: playerRole,

@@ -303,11 +303,6 @@ var initScriptEngine = function(){
 		eval(plan);
 		console.log(plan);
 
-		//send data to panel B
-		window.planList=planList;
-		Session.set('planList', planList);
-		$('#send-data').trigger('click');
-
 		//if plan was not sufficient to carry out goal, kill the player
 		if(!gameOver) loseGame();
 		console.log(planList);
@@ -315,6 +310,15 @@ var initScriptEngine = function(){
 
 		// send trace to Meteor server
 		Meteor.call('pushCalltraceToClientB', callTrace, function(error, result){
+			if (result){
+				lg(result);
+			} else { // error
+				lg (error);
+			}
+		});
+
+		//send plan to panel B
+		Meteor.call('pushActionsToClientB', planList, function(error, result){
 			if (result){
 				lg(result);
 			} else { // error

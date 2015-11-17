@@ -6,20 +6,21 @@
 			<img id="sprite-image" src="images/mario_stop.png" style="height:50px;">
 		</div>
 	</div>
-	<div id='logContainer' class='leftcontainer'>
+	<div id='logContainer' class='leftcontainer' style='border:solid'>
+		<span class='label'>Program execution:</span>
 		{{#unless actions}}
 		Waiting for actions..
 		{{/unless}}
-	</div>
 
 	<div class="row">
-		<div class="col m6 offset-m3"> <!--MaterializeCss grid -->
-			<ul>
+		<div > <!--MaterializeCss grid -->
+			<ul style="padding-left: 20px;">
 				{{#each actions}}
-				<li>{{this.action_name}}</li>
+				<li style='list-style-type:disc !important'>{{this.action_name}}</li>
 				{{/each}}
 			</ul>
 		</div>
+	</div>
 	</div>
 </div>
 {{functions}} <!-- used by 'hacker helper' -->

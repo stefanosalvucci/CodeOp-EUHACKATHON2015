@@ -311,7 +311,7 @@ var initScriptEngine = function(){
 		$('#send-data').trigger('click');
 
 		//animate the viewPort
-		gameFunction.playAnimation(callTrace);
+		viewportFunctions.playAnimation(callTrace);
 
 		//if plan was not sufficient to carry out goal, kill the player
 		if(!gameOver) loseGame();

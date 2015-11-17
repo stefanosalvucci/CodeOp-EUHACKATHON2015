@@ -1,14 +1,22 @@
 Meteor.startup(function() {
 
     // publish collections
-    Meteor.publish('ActionsKidA', function(){
-        return ActionsKidA.find();
-    });
-
     Meteor.publish('ChatMessages', function(){
         return ChatMessages.find();
     });
 
-    // reset chat history
-    if (Meteor.isServer) {ChatMessages.remove({});}
+    Meteor.publish('Actions', function(){
+        return Actions.find();
+    });
+
+    Meteor.publish('CallTrace', function(){
+        return CallTrace.find();
+    });
+
+    // reset collections
+    if (Meteor.isServer) {
+        ChatMessages.remove({});
+        Actions.remove({});
+        CallTrace.remove({});
+    }
 });

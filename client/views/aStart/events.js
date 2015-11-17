@@ -14,7 +14,7 @@ Template.aStart.events({
     }
 });
 
-Template.aStart.onCreated(function(){
+Template.aStart.onCreated(function(){ // before rendered
     // sample data
     var sampleActions = new Array();
 
@@ -23,6 +23,8 @@ Template.aStart.onCreated(function(){
     }
 
     window.sampleActions = sampleActions;
+
+    initViewPortEngine();
 });
 
 Template.aStart.onRendered(function(){

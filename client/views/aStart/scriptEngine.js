@@ -31,6 +31,9 @@ var initScriptEngine = function(){
 	//current execution step
 	var currentStep=1;
 
+	//list of actions for the B panel
+	var planList=new Array();
+
 	//maximum execution steps allowed to prevent infinite loops
 	var maxSteps=50;
 
@@ -72,6 +75,7 @@ var initScriptEngine = function(){
 		maxSteps=50;
 		gameOver=false;
 		scriptedAction=$('<div>');
+		$('#scriptContainer').append(scriptedAction);
 	}
 
 	//terminates the game
@@ -109,6 +113,10 @@ var initScriptEngine = function(){
 
 	//populate the output log
 	function gameLog(message){
+		//add to list of game events to be sent to B
+		planList.push(message);
+
+		//publish on panel A
 		$('#executionContainer').append($('<div>').text(message));
 	}
 
@@ -171,6 +179,12 @@ var initScriptEngine = function(){
 			gameLog('you walk right');
 		}
 
+		//if you have the ladder, the ladder moves with you
+		if(hasLadder){
+			//update ladder location
+			ladderLocation=heroLocation;
+		}
+
 		//check what you have at reach
 		updateSurroundingStatus();
 	}
@@ -182,6 +196,12 @@ var initScriptEngine = function(){
 
 		//move left
 		heroLocation-=1;
+
+		//if you have the ladder, the ladder moves with you
+		if(hasLadder){
+			//update ladder location
+			ladderLocation=heroLocation;
+		}
 
 		//output log
 		gameLog('you walk left');
@@ -221,6 +241,9 @@ var initScriptEngine = function(){
 			//drop it
 			hasLadder=false;
 
+			//update ladder location
+			ladderLocation=heroLocation;
+
 		//special case: dropping it on the canyon makes it traversable
 			if(atCanyon){
 				//update world status
@@ -236,6 +259,9 @@ var initScriptEngine = function(){
 			//deny action
 			gameLog('you didn\' have any ladder to drop');
 		}
+
+		//check what you have at reach
+		updateSurroundingStatus();
 	}
 
 	//wheneven the player clicks on an action
@@ -335,9 +361,14 @@ var initScriptEngine = function(){
 		//execute generated code
 		eval(plan);
 		console.log(plan);
+		
+		//send data to panel B
+		window.planList=planList;
+		$('#send-data').trigger('click');
 
 		//if plan was not sufficient to carry out goal, kill the player
 		if(!gameOver) loseGame();
+		console.log(planList);
 	})
 
 	//reset game

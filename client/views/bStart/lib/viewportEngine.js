@@ -1,11 +1,18 @@
 var viewportFunctions = {};
 
+  window.viewportAtCanyon=false;
+  window.viewportHasLadder=false;
+  window.viewportCanyonTraversable=false;
+  window.viewportLadderLocation=-3;
+  window.viewportCanyonLocation=3;
+  window.viewportHeroLocation=0;
+
 var initViewportEngine = function(){
 
   viewportFunctions.walkRight = function(callbacks){
     viewportFunctions.flip(1);
     $('#sprite-image').attr("src", "images/mario_move.gif");
-    if (parseInt($('#sprite').css("margin-left")) < 600) {
+    if ((!viewportCanyonTraversable && parseInt($('#sprite').css("margin-left")) < 460) || (viewportCanyonTraversable && parseInt($('#sprite').css("margin-left")) < 550)){
       move('#sprite')
         .duration(1000)
         .add('margin-left', 30)
@@ -59,9 +66,29 @@ var initViewportEngine = function(){
   };
 
 
+  viewportFunctions.takeLadder = function(callbacks){
+    if (viewportFunctions.viewportAtLadder()) {
+      $('#ladder-sprite').hide();
+      viewportHasLadder = true;
+    }
+    if (callbacks.length > 0) {
+      console.log(callbacks);
+      var functionToCall = callbacks.shift();
+      eval(functionToCall + '([' + callbacks.map(function(o){return '"' + o + '"'}) + '])');
+    }
+  }
+
   viewportFunctions.dropLadder = function(callbacks){
-    if (hasLadder && atCanyon) {
-      $('#viewport').css("background-image", "url('images/mario_with_canyon_traversable.jpg')");
+    if (viewportHasLadder) {
+      viewportHasLadder = false;
+      $('#ladder-sprite').css("padding-left", $("#sprite").css("margin-left"));
+      $('#ladder-sprite').show();
+      if (viewportFunctions.viewportAtCanyon()){
+        move("#ladder-sprite-image").add("margin-left", 35).end();
+        move("#ladder-sprite-image").rotate(90).end();
+        move("#ladder-sprite-image").add("margin-top", 25).end();
+        viewportCanyonTraversable = true;
+      }
     }
     if (callbacks.length > 0) {
       console.log(callbacks);
@@ -92,6 +119,19 @@ var initViewportEngine = function(){
   viewportFunctions.winGame = function(callTrace){
     alert("congrats, you did it!");
   }
+
+  viewportFunctions.viewportAtLadder = function(){
+    var marioPL = parseInt($('#sprite').css("margin-left"));
+    var ladderPL = parseInt($('#ladder-sprite').css("padding-left"));
+    return (Math.abs((marioPL - ladderPL)) < 16)
+  }
+
+
+  viewportFunctions.viewportAtCanyon = function(){
+    var marioPL = parseInt($('#sprite').css("margin-left"));
+    return (Math.abs((marioPL - 480)) < 25)
+  }
+
 
   window.viewportFunctions = viewportFunctions;
 

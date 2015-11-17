@@ -21,6 +21,15 @@ var initScriptEngine = function(){
 	//where the hero is
 	var heroLocation=0;
 
+	// allow viewport to see them
+	window.atLadder = atLadder
+	window.atCanyon = atCanyon
+	window.hasLadder = hasLadder
+	window.canyonTraversable = canyonTraversable
+	window.ladderLocation = ladderLocation
+	window.canyonLocation = canyonLocation
+	window.heroLocation = heroLocation
+
 	//the code generated
 	var plan='';
 

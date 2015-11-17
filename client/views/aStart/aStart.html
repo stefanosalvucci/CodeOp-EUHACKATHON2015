@@ -1,5 +1,4 @@
 <template name="aStart">
-{{> chat}}
 <style>
 	button {
 		border-radius: 25px;
@@ -19,14 +18,22 @@
 
 	.leftcontainer{
 		width: 50%;
+		float:left;
+		margin: 5px 5px 5px 5px;
 	}
 
 	.rightcontainer{
 		width: 40%;
+		float:right;
+		margin: 5px 5px 5px 5px;
 	}
 
 	.instructionContainerRow{
 		margin-top:5px;
+	}
+
+	.instructionGroup{
+		margin-left:5px;
 	}
 
 	#gamePlayerContainer{
@@ -37,72 +44,55 @@
 <!--<strong>&nbsp;Data sending</strong> -  {{sendStatus}}
 <br/><a class="waves-effect waves-light btn" id="send-data">Send sample data</a>-->
 
-<div style="width: 100%; overflow: hidden;">
-	<div class='rightcontainer' style='float:right; height:377px; border-style: solid;'>
+
+<div class='leftcontainer'>
+
+	<div style='height:60%; border-style: solid;'>
 		<span class='label'>Plan:</span>
-		<div style='height:314px; width:100%; overflow-y: auto;' id='scriptContainer'></div>
+		<div style='height:314px; overflow-y: auto;' id='scriptContainer'></div>
 		<div id='gamePlayerContainer'>
 			<button id='play'>Play</button>
 			<button id='reset'>Reset</button>
 		</div>
 	</div>
+	<div id='actionsContainer' style='margin-top:20px; border-style: solid; padding: 10px 0px 10px 0px'>
+		<div class='instructionGroup'>
+			<div style='float:left' class='label'>Actions:</div>
+			<div style='float:left'>
+				<button class='action line' id='walkLeft'>Walk Left</button>
+				<button class='action line' id='walkRight'>Walk Right</button>
+				<button class='action line' id='takeLadder'>Take Ladder</button>
+				<button class='action line' id='dropLadder'>Drop Ladder</button>
+			</div>
+		</div>
+		<div style='clear:both'></div>
+		<div class='instructionContainerRow instructionGroup'>
+			<div style='float:left' class='label'>Repetition:</div>
+			<div style='float:left'>
+				<button class='think line' id='while'>While</button>
+			</div>
+		</div>
+		<div style='clear:both'></div>
+		<div class='instructionContainerRow instructionGroup'>
+			<div style='float:left' class='label'>Evaluation:</div>
+			<div style='float:left'>
+				<button class='think line' id='if'>If</button>
+			</div>
+		</div>
+		<div style='clear:both'></div>
+		<div class='instructionContainerRow instructionGroup'>
+			<div style='float:left' class='label'>Condition:</div>
+			<div style='float:left'>
+				<button class='condition line' id='not'>Not</button>
+				<button class='condition line' id='AtLadder'>At Ladder</button>
+				<button class='condition line' id='AtCanyon'>At Canyon</button>
+				<button class='condition line' id='HasLadder'>Has Ladder</button>
+			</div>
+		</div>
+		<div style='clear:both'></div>
+	</div>
 </div>
-<div id='gameInstructionsContainer' style='display:none'>
-	Instructions:
-	<ul>
-		<li>Select actions</li>
-		<li>Each action is added to a plan</li>
-		<li>'Repeat Until' statement, paired with a condition, repeats next action until the condition is no more satisfied</li>
-		<li>Click on Play to execute the plan</li>
-		<li>Click on Reset to reset the plan</li>
-	</ul>
-	<strong>Plot</strong>
-	<p>
-	An avalanche is coming on you; there is:
-	<ul>
-		<li>a ladder somewhere on the left</li>
-		<li>a canyon somewhere on the right</li>
-	</ul>
-	You need to get past the canyon to save yourself from the avalanche!
-	<strong>What do your do?</strong>
-	</p>
-</div>
-<div id='actionsContainer' class='leftcontainer'  style='margin-top:20px; border-style: solid; padding: 10px 0px 10px 0px'>
-	<div >
-		<div style='float:left' class='label'>Actions:</div>
-		<div style='float:left'>
-			<button class='action line' id='walkLeft'>Walk Left</button>
-			<button class='action line' id='walkRight'>Walk Right</button>
-			<button class='action line' id='takeLadder'>Take Ladder</button>
-			<button class='action line' id='dropLadder'>Drop Ladder</button>
-		</div>
-	</div>
-	<div style='clear:both'></div>
-	<div class='instructionContainerRow'>
-		<div style='float:left' class='label'>Repetition:</div>
-		<div style='float:left'>
-			<button class='think line' id='while'>While</button>
-		</div>
-	</div>
-	<div style='clear:both'></div>
-	<div class='instructionContainerRow'>
-		<div style='float:left' class='label'>Evaluation:</div>
-		<div style='float:left'>
-			<button class='think line' id='if'>If</button>
-		</div>
-	</div>
-	<div style='clear:both'></div>
-	<div class='instructionContainerRow'>
-		<div style='float:left' class='label'>Condition:</div>
-		<div style='float:left'>
-			<button class='condition line' id='not'>Not</button>
-			<button class='condition line' id='AtLadder'>At Ladder</button>
-			<button class='condition line' id='AtCanyon'>At Canyon</button>
-			<button class='condition line' id='HasLadder'>Has Ladder</button>
-		</div>
-	</div>
-	<div style='clear:both'></div>
-</div>
+<div class='rightcontainer' style='border:solid' id='chat'>{{> chat}}</div>
 <div style='clear:both'></div>
 
 <span class='label'>Execution:</span>

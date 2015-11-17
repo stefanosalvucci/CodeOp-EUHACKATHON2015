@@ -1,9 +1,9 @@
-var gameFunctions = {};
+var viewportFunctions = {};
 
 var initViewportEngine = function(){
 
-  gameFunctions.moveSpriteRight = function(callbacks){
-    gameFunctions.flip(1);
+  viewportFunctions.moveSpriteRight = function(callbacks){
+    viewportFunctions.flip(1);
     $('#sprite-image').attr("src", "images/mario_move.gif");
     if (parseInt($('#sprite').css("margin-left")) < 600) {
       move('#sprite')
@@ -28,8 +28,8 @@ var initViewportEngine = function(){
     };
   };
 
-  gameFunctions.moveSpriteLeft = function(callbacks){
-    gameFunctions.flip(-1);
+  viewportFunctions.moveSpriteLeft = function(callbacks){
+    viewportFunctions.flip(-1);
     $('#sprite-image').attr("src", "images/mario_move.gif");
     if (parseInt($('#sprite').css("margin-left")) > 70) {
       move('#sprite')
@@ -54,9 +54,29 @@ var initViewportEngine = function(){
     }
   };
 
+  viewportFunctions.takeLadder = function(callbacks){
+    if (atLadder) {
+      $('#viewport').css("background-image", "url('images/mario_bg.jpg')");
+    }
+    if (callbacks.length > 0) {
+      console.log(callbacks);
+      var functionToCall = callbacks.shift();
+      eval(functionToCall + '([' + callbacks.map(function(o){return '"' + o + '"'}) + '])');
+    }
+  }
 
+  viewportFunctions.dropLadder = function(callbacks){
+    if (hasLadder && atCanyon) {
+      $('#viewport').css("background-image", "url('images/mario_with_canyon_traversable.jpg')");
+    }
+    if (callbacks.length > 0) {
+      console.log(callbacks);
+      var functionToCall = callbacks.shift();
+      eval(functionToCall + '([' + callbacks.map(function(o){return '"' + o + '"'}) + '])');
+    }
+  }
 
-  gameFunctions.flip = function(direction){
+  viewportFunctions.flip = function(direction){
     move("#sprite-image")
       .set('-moz-transform', 'scaleX(' + direction + ')')
       .set('-o-transform', 'scaleX(' + direction + ')')
@@ -65,12 +85,16 @@ var initViewportEngine = function(){
       .end()
   }
 
-  window.gameFunctions = gameFunctions;
+  viewportFunctions.playAnimation = function(callTrace){
+
+  }
+
+  window.viewportFunctions = viewportFunctions;
 
 
   // initial move to put mario right enough
   setTimeout(function(){
-    gameFunctions.moveSpriteRight(["gameFunctions.moveSpriteRight", "gameFunctions.moveSpriteRight", "gameFunctions.moveSpriteRight"]);
+    viewportFunctions.moveSpriteRight(["viewportFunctions.moveSpriteRight", "viewportFunctions.moveSpriteRight", "viewportFunctions.moveSpriteRight"]);
   }, 400);
 
 };

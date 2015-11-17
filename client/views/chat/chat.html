@@ -1,7 +1,7 @@
 <template name="chat">
     <div class="row"> <!-- align div to bottom-right corner -->
         <!-- messages sent -->
-        <div class="col s12">
+        <div class="col s12" style="height: 350px;">
             <ul style="height: 50%; overflow-y: scroll;">
                 {{#each chatMessages}}
                     <li><strong>{{this.username}}</strong>&nbsp;-&nbsp;{{this.message}}</li>

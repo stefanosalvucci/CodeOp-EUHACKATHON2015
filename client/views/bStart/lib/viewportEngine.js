@@ -20,7 +20,7 @@ var initViewportEngine = function(){
       .end(function(){
         $('#sprite-image').attr("src", "images/mario_stop.png");
       });
-  }
+  };
 
   gameFunctions.flip = function(direction){
     move("#sprite-image")
@@ -29,7 +29,7 @@ var initViewportEngine = function(){
       .set('-webkit-transform', 'scaleX(' + direction + ')')
       .set('transform', 'scaleX(' + direction + ')')
       .end()
-  }
+  };
 
   window.gameFunctions = gameFunctions;
 

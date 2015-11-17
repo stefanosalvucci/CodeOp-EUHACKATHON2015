@@ -2,8 +2,6 @@
 <head>
 <title>Proof of Concept for Programmable Script Engine</title>
 <script type='text/javascript' src='jquery-1.11.3.min.js'></script>
-<script type='text/javascript' src='move.min.js'></script>
-<script type='text/javascript' src='scriptEngine.js'></script>
 </head>
 <body style='font-family:Arial;'>
 
@@ -39,9 +37,9 @@ You need to get past the canyon to save yourself from the avalanche!
 	<button class='condition line' id='NatCanyon'>Not At Canyon</button>
 </div>
 
-<div id="viewport" style="width: 300px; heigth: 200px;">
+<div id="viewport" style="background-image: url('mario_bg.jpg'); height: 377px; width: 664px;">
   <div id="sprite">
-    <img src="mario_stop.png" style="height:30px;">
+    <img id="sprite-image" src="mario_stop.png" style="height:50px;">
   </div>
 </div>
 
@@ -55,5 +53,10 @@ Execution:
 
 <button id='play'>Play</button>
 <button id='reset'>Reset</button>
+
+<script type='text/javascript' src='move.min.js'></script>
+<script type='text/javascript' src='viewportEngine.js'></script>
+<script type='text/javascript' src='scriptEngine.js'></script>
+
 </body>
 </html>

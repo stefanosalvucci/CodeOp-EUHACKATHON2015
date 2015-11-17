@@ -310,6 +310,9 @@ var initScriptEngine = function(){
 		Session.set('planList', planList);
 		$('#send-data').trigger('click');
 
+		//animate the viewPort
+		gameFunction.playAnimation(callTrace);
+
 		//if plan was not sufficient to carry out goal, kill the player
 		if(!gameOver) loseGame();
 		console.log(planList);

@@ -113,7 +113,7 @@ var initViewportEngine = function(){
   }
 
   viewportFunctions.loseGame = function(callTrace){
-    Session.set("infoMessage", "after some time, the avalanche buries you: you lost");
+    Session.set("infoMessage", "after some time, the Princess gets tired and goes away you: you lost");
   }
 
   viewportFunctions.winGame = function(callTrace){

@@ -66,5 +66,12 @@ Meteor.methods({
         CallTrace.remove({});
         //Meteor.users.remove({});
         return true;
+    },
+    'resetApp': function(){
+        ChatMessages.remove({});
+        Actions.remove({});
+        CallTrace.remove({});
+        Meteor.users.remove({});
+        return true;
     }
 });

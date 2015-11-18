@@ -296,7 +296,7 @@ var initScriptEngine = function(){
 
 		//if the flag is still raised, the player left a while without subject action; stop
 		if(justClosedWhile){
-			alert('you need to select an action after a while');
+			$('#modalErrorNoInstruction').openModal();
 			return;
 		}
 
@@ -374,7 +374,7 @@ var initScriptEngine = function(){
 				if(!$(this).hasClass('condition')){
 
 					//demand it
-					alert('you need a condition');
+					$('#modalErrorNoCondition').openModal();
 
 					//and refuse to add the action
 					return;
@@ -412,7 +412,7 @@ var initScriptEngine = function(){
 					case 'AtLadder':
 					case 'HasLadder':
 						//demand it
-						alert('you need to be in an if or a while to put a condition or a negation');
+						$('#modalErrorConditionNegation').openModal();
 
 						//and refuse to add the action
 						return;

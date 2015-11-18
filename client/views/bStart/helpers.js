@@ -24,5 +24,8 @@ Template.bStart.helpers({
 				viewportFunctions.playAnimation(calltraceStrArray);
 				return "";
 			}
-	}
+	},
+    "infoMessage": function(){
+        return Session.get('infoMessage');
+    }
 });

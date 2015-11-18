@@ -67,13 +67,15 @@ Meteor.methods({
         Actions.remove({});
         CallTrace.remove({});
         //Meteor.users.remove({});
-        return false; // to not ger error on client side
+        return true;
+        // return false; // to not ger error on client side
     },
     'resetApp': function(){
         ChatMessages.remove({});
         Actions.remove({});
         CallTrace.remove({});
         Meteor.users.remove({});
-        return false;
+        return true;
+        // return false;
     }
 });

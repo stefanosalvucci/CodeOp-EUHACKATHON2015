@@ -14,22 +14,24 @@ var resetCollections = function(){
 var resetApp = function(){
 
     //Db
+    // reset app
     Meteor.call('resetApp', function(result,error){
         if (result){
             lg('result');
-
-            // session vars (from enterAs)
-            Session.set('playerName', null);
-            Session.set('playerRole', null);
-            Session.set('returningPlayer', null);
-
-            // reload page (main view
-            Router.go('/');
         }
 
         if (error){
             lg('error');
         }
+
+        lg('reset session vars');
+        // session vars (from enterAs)
+        Session.set('playerName', null);
+        Session.set('playerRole', null);
+        Session.set('returningPlayer', null);
+
+        // reload page (main view
+        Router.go('/');
     });
 };
 

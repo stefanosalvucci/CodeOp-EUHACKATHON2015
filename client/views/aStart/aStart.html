@@ -1,6 +1,49 @@
 <template name="aStart">
 <!-- TODO: remove this -->
 
+<!-- modals -->
+<div id="modalInstructionsA" class="modal" style="top: 32%;">
+    <div class="modal-content">
+        <div style="font-weight:bold; text-align:center;">How to play (Debugger)</div>
+        <div style="margin-top: 10px;"> _ HERE INSTRUCTIONS _ </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect btn-flat" style="margin-top: 5vh; width: 100%; text-align: center;">Got it!</a>
+    </div>
+</div>
+<script>
+    $('#modalInstructionsA').openModal();
+</script>
+
+<div id="modalErrorNoInstruction" class="modal" style="top: 32%;">
+    <div class="modal-content" style="text-align: center;">
+        <div style="text-align:center;"><span style="font-weight:bold;">ERROR:&nbsp;</span>you need to select an action after a while</div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect btn-flat" style="margin-top: 5vh; width: 100%; text-align: center;">Ok. Let's fix this...</a>
+    </div>
+</div>
+
+<div id="modalErrorNoCondition" class="modal" style="top: 32%;">
+    <div class="modal-content" style="text-align: center;">
+        <div style="text-align:center;"><span style="font-weight:bold;">ERROR:&nbsp;</span>you need a condition after a while/if</div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect btn-flat" style="margin-top: 5vh; width: 100%; text-align: center;">Ok. Let's fix this...</a>
+    </div>
+</div>
+
+<div id="modalErrorConditionNegation" class="modal" style="top: 32%;">
+    <div class="modal-content" style="text-align: center;">
+        <div style="text-align:center;"><span style="font-weight:bold;">ERROR:&nbsp;</span>you need to be in an if or a while to put a condition or a negation</div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect btn-flat" style="margin-top: 5vh; width: 100%; text-align: center;">Ok. Let's fix this...</a>
+    </div>
+</div>
+
+
+
 <div class='leftcontainer'>
 
 	<div style='height:60%; border-style: solid;'>

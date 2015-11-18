@@ -1,5 +1,20 @@
 <template name="bStart">
-<div class='rightcontainer' style='border:solid' id='chat'>{{> chat}}</div>
+    {{infoMessage}}<br/>
+    <!-- modals -->
+    <div id="modalInstructionsB" class="modal" style="top: 32%;">
+        <div class="modal-content">
+            <div style="font-weight:bold; text-align:center;">How to play (Coder)</div>
+            <div style="margin-top: 10px;"> _ HERE INSTRUCTIONS _ </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect btn-flat" style="margin-top: 5vh; width: 100%; text-align: center;">Got it!</a>
+        </div>
+    </div>
+    <script>
+        $('#modalInstructionsB').openModal();
+    </script>
+
+    <div class='rightcontainer' style='border:solid' id='chat'>{{> chat}}</div>
 <div class='leftcontainer'>
 	<div id="viewport" class='leftcontainer' style="width:100% !important; background-image: url('images/mario_bg.jpg'); height: 377px; float:left; border-style: solid;">
 		<div id="sprite" style="padding-top:269px;">

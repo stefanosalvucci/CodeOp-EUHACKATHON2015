@@ -53,11 +53,13 @@ Meteor.methods({
 
         lg(newMessage);
 
+        lg(new Date().valueOf());
+
         return ChatMessages.insert({
             username: playerName,
             role: playerRole,
             message:newMessage,
-            sentAt: Date.now()
+            sentAt: new Date().valueOf()
         });
     },
     'resetDbCollections': function(){
@@ -65,6 +67,13 @@ Meteor.methods({
         Actions.remove({});
         CallTrace.remove({});
         //Meteor.users.remove({});
-        return true;
+        return false; // to not ger error on client side
+    },
+    'resetApp': function(){
+        ChatMessages.remove({});
+        Actions.remove({});
+        CallTrace.remove({});
+        Meteor.users.remove({});
+        return false;
     }
 });

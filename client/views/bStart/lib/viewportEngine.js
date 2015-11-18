@@ -113,12 +113,10 @@ var initViewportEngine = function(){
   }
 
   viewportFunctions.loseGame = function(callTrace){
-    resetCollections();
     alert("after some time, the avalanche buries you: you lost");
   }
 
   viewportFunctions.winGame = function(callTrace){
-    resetCollections();
     alert("congrats, you did it!");
   }
 

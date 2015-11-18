@@ -83,6 +83,7 @@ var initScriptEngine = function(){
 		planList= new Array();
 		delete callTrace;
 		callTrace= new Array();
+		resetCollections();
 	}
 
 	//terminates the game

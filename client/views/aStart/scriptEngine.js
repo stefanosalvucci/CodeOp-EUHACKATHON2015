@@ -99,7 +99,7 @@ var initScriptEngine = function(){
 	//checks whether the player won
 	function checkGameOutcome(){
 		//if you are past the canyon, announce victory
-		if(heroLocation > canyonLocation){
+		if((heroLocation - 2) > canyonLocation){
 			message='you got past the canyon: you won';
 			gameLog(message);
 			gameOver=true;

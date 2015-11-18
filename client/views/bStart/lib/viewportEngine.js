@@ -113,11 +113,11 @@ var initViewportEngine = function(){
   }
 
   viewportFunctions.loseGame = function(callTrace){
-    alert("after some time, the avalanche buries you: you lost");
+    Session.set("infoMessage", "after some time, the avalanche buries you: you lost");
   }
 
   viewportFunctions.winGame = function(callTrace){
-    alert("congrats, you did it!");
+    Session.set("infoMessage", "congrats, you did it!");
   }
 
   viewportFunctions.viewportAtLadder = function(){

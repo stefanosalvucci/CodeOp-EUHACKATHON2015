@@ -2,15 +2,15 @@
     <div class="row"> <!-- align div to bottom-right corner -->
         <!-- messages sent -->
         <div class="col s12" style="height: 350px;">
-            <ul style="height: 50%; overflow-y: scroll;">
+            <ul style="height: 69%; overflow-y: scroll;">
                 {{#each chatMessages}}
                     <li><strong>{{this.username}}</strong>&nbsp;-&nbsp;{{this.message}}</li>
                 {{/each}}
             </ul>
             <!--<div class="card-panel" style="margin: 0 1rem; height: 100%;">-->
-            <form class="chat" style="height: 40%;">
+            <form class="chat" style="height: 20%;">
                 <div class="input-field col s12">
-                    <input id="new-message" style="text-align: center;" name="new-message" value="{{defaultMessage}}" placeholder="Insert a message..." type="text" required>
+                    <input id="new-message" style="text-align: left; margin-bottom:-5px!important" name="new-message" value="{{defaultMessage}}" placeholder="Insert a message..." type="text" required>
                 </div>
                 <div class="row">
                     <button class="col s12 waves-effect" type="submit" name="action">Send IM

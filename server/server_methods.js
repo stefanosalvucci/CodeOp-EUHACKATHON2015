@@ -60,12 +60,11 @@ Meteor.methods({
             sentAt: Date.now()
         });
     },
-    // !! DEBUG
     'resetDbCollections': function(){
-        ChatMessages.remove({});
+        //ChatMessages.remove({});
         Actions.remove({});
         CallTrace.remove({});
-        Meteor.users.remove({});
+        //Meteor.users.remove({});
         return true;
     }
 });

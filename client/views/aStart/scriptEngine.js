@@ -16,7 +16,7 @@ var initScriptEngine = function(){
 	window.ladderLocation=-3;
 
 	//where the canyon is
-	window.canyonLocation=3;
+	window.canyonLocation=11;
 
 	//where the hero is
 	window.heroLocation=0;

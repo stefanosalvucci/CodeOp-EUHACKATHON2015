@@ -10,32 +10,37 @@ Template.enterAs.events({
         lg('b >>' + playerRole);
         lg('c >>' + routeName);
 
-        // create user by real name, unless it already exists
-        Meteor.call('playerExists', playerName, function(error, result){
-            // set session vars to be used in other views
-            Session.set('playerName', playerName);
-            Session.set('playerRole', playerRole);
+        lg(playerName.trim());
+        lg(typeof playerName);
 
-            if (result){
-                Session.set('returningPlayer', true);
-                Router.go(routeName);
-            } else {
-                lg("create new user");
-                Meteor.call('createPlayer', playerName, playerRole, function (error, result) {
-                    if (result) {
-                        // newly create user id
-                        lg(result);
-                        Router.go(routeName);
-                    }
+        if (typeof playerName === 'undefined' || playerName.trim() == ''){
+            $("#modalUsernameNotSet").openModal();
+        } else {
+            // create user by real name, unless it already exists
+            Meteor.call('playerExists', playerName, function(error, result){
+                // set session vars to be used in other views
+                Session.set('playerName', playerName);
+                Session.set('playerRole', playerRole);
 
-                    if (error){
-                        lg(error);
-                        // show error
-                        $('#modalUsernameNotSet').openModal();
-                    }
-                });
-                Session.set('returningPlayer', false);
-            }
-        });
+                if (result){
+                    Session.set('returningPlayer', true);
+                    Router.go(routeName);
+                } else {
+                    lg("create new user");
+                    Meteor.call('createPlayer', playerName, playerRole, function (error, result) {
+                        if (result) {
+                            // newly create user id
+                            lg(result);
+                            Router.go(routeName);
+                        }
+
+                        if (error){
+                            lg(error);
+                        }
+                    });
+                    Session.set('returningPlayer', false);
+                }
+            });
+        }
     }
 });

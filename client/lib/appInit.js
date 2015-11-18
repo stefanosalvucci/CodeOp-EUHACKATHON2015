@@ -5,6 +5,6 @@ Meteor.startup(function(){
     });
 
     // some other code
-    var debugMode = 1; // 0 = false, 1 = true
+    var debugMode = 0; // 0 = false, 1 = true
     Session.set('debugMode', (debugMode == 1));
 });

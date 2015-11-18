@@ -128,8 +128,8 @@ var initScriptEngine = function(){
 		//add to list of game events to be sent to B
 		planList.push(message);
 
-		//publish on panel A
-		$('#executionContainer').append($('<div>').text(message));
+		//debug in panel A
+		console.log(message);
 	}
 
 	//check if you have a ladder
@@ -332,9 +332,6 @@ var initScriptEngine = function(){
 	$('#reset').on('click',function(){
 		//clear plan
 		$('#scriptContainer').html('');
-
-		//clear log
-		$('#executionContainer').html('');
 
 		//reset game status
 		resetGame();

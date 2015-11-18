@@ -88,7 +88,7 @@ var initScriptEngine = function(){
 
 	//terminates the game
 	function loseGame(){
-		message='after some time, the avalanche buries you: you lost';
+		message='after some time, the Princess gets tired and goes away you: you lost';
 		gameLog(message);
 		gameOver=true;
 
